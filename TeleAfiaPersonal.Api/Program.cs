@@ -1,17 +1,18 @@
-
-
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Reflection;
 using System.Text;
-using TeleAfiaPersonal.Infrastructure;
-using TeleAfiaPersonal.Infrastructure.Authentication; // Import the namespace for JwtTokenGenerator
 using TeleAfiaPersonal.Application.Authentication.Command.Register;
-using MediatR;
+using TeleAfiaPersonal.Application.Common.interfaces;
 using TeleAfiaPersonal.Application.Common.interfaces.Authentication;
+using TeleAfiaPersonal.Infrastructure;
+using TeleAfiaPersonal.Infrastructure.Authentication;
 using TeleAfiaPersonal.Infrastructure.Repositories;
-using TeleAfiaPersonal.Application.Common.interfaces; // Import MediatR namespace
+using MediatR;
+using AutoMapper; // Import AutoMapper namespace
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +28,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Register MediatR
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly()); ; // Register MediatR for services from the executing assembly
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly()); // Register MediatR for services from the executing assembly
+
+// Register AutoMapper
+builder.Services.AddAutoMapper(typeof(RegisterCommandHandler)); // Register AutoMapper for services from the executing assembly
 
 // Register RegisterCommandHandler
 builder.Services.AddTransient<IRequestHandler<RegisterCommand, Unit>, RegisterCommandHandler>();
