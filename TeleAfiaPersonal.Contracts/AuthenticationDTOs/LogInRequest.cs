@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TeleAfiaPersonal.Contracts.Authentication
+namespace TeleAfiaPersonal.Contracts.AuthenticationDTOs
 {
-    internal class LogInRequest
+    public class LogInRequest
     {
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }

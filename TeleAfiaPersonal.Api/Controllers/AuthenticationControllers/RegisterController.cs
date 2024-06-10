@@ -1,7 +1,8 @@
-﻿
+﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TeleAfiaPersonal.Application.Authentication.Command.Register;
+using TeleAfiaPersonal.Contracts.AuthenticationDTOs;
 
 namespace TeleAfiaPersonal.Api.Controllers.AuthenticationControllers
 {
@@ -10,17 +11,20 @@ namespace TeleAfiaPersonal.Api.Controllers.AuthenticationControllers
     public class AuthController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
 
-        public AuthController(IMediator mediator)
+        public AuthController(IMediator mediator, IMapper mapper)
         {
             _mediator = mediator;
+            _mapper = mapper;
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterCommand command)
         {
-            await _mediator.Send(command);
-            return Ok(new { message = "User registered successfully." });
+            var response = await _mediator.Send(command);
+           // var mappedResponse = _mapper.Map<AuthenticationResponse>(response);
+            return Ok("User Registered Successfully");
         }
     }
 }
