@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleAfiaPersonal.Api", "TeleAfiaPersonal.Api\TeleAfiaPersonal.Api.csproj", "{CDE332A8-8177-4BC1-AADD-BDDE401C8488}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleAfiaPersonal.Domain", "TeleAfiaPersonal.Domain\TeleAfiaPersonal.Domain.csproj", "{ECDEA8AB-D0CA-49C7-9784-EBA3419664F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleAfiaPersonal.Infrastructure", "TeleAfiaPersonal.Infrastructure\TeleAfiaPersonal.Infrastructure.csproj", "{3A08E5D7-0981-4AE9-A3CE-AB0786593CA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleAfiaPersonal.Application", "TeleAfiaPersonal.Application\TeleAfiaPersonal.Application.csproj", "{C541D2B0-808D-49B2-8B59-70E632B47656}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleAfiaPersonal.Contracts", "TeleAfiaPersonal.Contracts\TeleAfiaPersonal.Contracts.csproj", "{6CDA7E78-0DB8-451F-86DF-57629E03F12D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDE332A8-8177-4BC1-AADD-BDDE401C8488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDE332A8-8177-4BC1-AADD-BDDE401C8488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDE332A8-8177-4BC1-AADD-BDDE401C8488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDE332A8-8177-4BC1-AADD-BDDE401C8488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECDEA8AB-D0CA-49C7-9784-EBA3419664F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECDEA8AB-D0CA-49C7-9784-EBA3419664F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECDEA8AB-D0CA-49C7-9784-EBA3419664F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECDEA8AB-D0CA-49C7-9784-EBA3419664F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A08E5D7-0981-4AE9-A3CE-AB0786593CA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A08E5D7-0981-4AE9-A3CE-AB0786593CA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A08E5D7-0981-4AE9-A3CE-AB0786593CA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A08E5D7-0981-4AE9-A3CE-AB0786593CA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C541D2B0-808D-49B2-8B59-70E632B47656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C541D2B0-808D-49B2-8B59-70E632B47656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C541D2B0-808D-49B2-8B59-70E632B47656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C541D2B0-808D-49B2-8B59-70E632B47656}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CDA7E78-0DB8-451F-86DF-57629E03F12D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CDA7E78-0DB8-451F-86DF-57629E03F12D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CDA7E78-0DB8-451F-86DF-57629E03F12D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CDA7E78-0DB8-451F-86DF-57629E03F12D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8E96B1E-15B3-48BB-8689-99F59D12EEFA}
+	EndGlobalSection
+EndGlobal
