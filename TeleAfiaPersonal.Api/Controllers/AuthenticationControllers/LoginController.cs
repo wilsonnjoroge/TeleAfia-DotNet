@@ -19,7 +19,7 @@ namespace TeleAfiaPersonal.Api.Controllers.AuthenticationControllers
             _mapper = mapper;
         }
 
-        [HttpPost("login")]
+        [HttpPost]
         public async Task<IActionResult> Login(LoginQuery request)
         {
             try

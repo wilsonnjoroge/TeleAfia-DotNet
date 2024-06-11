@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System;
 using System.Reflection;
 using System.Text;
 using TeleAfiaPersonal.Application.Authentication.Command.Register;
@@ -10,16 +9,19 @@ using TeleAfiaPersonal.Application.Common.interfaces.Authentication;
 using TeleAfiaPersonal.Infrastructure.Authentication;
 using TeleAfiaPersonal.Infrastructure.Repositories;
 using MediatR;
-using AutoMapper;
 using TeleAfiaPersonal.Infrastructure;
 using TeleAfiaPersonal.Contracts.AuthenticationDTOs;
 using TeleAfiaPersonal.Application.Common.Interfaces;
-using TeleAfiaPersonal.Application.Authentication.Command.Login; // Import AutoMapper namespace
+using TeleAfiaPersonal.Application.Authentication.Command.Login;
+using TeleAfiaPersonal.Infrastructure.EmailSender;
+using TeleAfiaPersonal.Contracts.EmailDTO; // Import AutoMapper namespace
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+
+var configuration = builder.Configuration;
 
 // Configure Swagger for API documentation
 builder.Services.AddEndpointsApiExplorer();
@@ -28,6 +30,7 @@ builder.Services.AddSwaggerGen();
 // Add DbContext and configure SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 // Register MediatR
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly()); // Register MediatR for services from the executing assembly
@@ -43,6 +46,12 @@ builder.Services.AddTransient<IRequestHandler<LoginQuery, AuthenticationResponse
 
 // Register IUserRepository
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+// Email Configuration
+var emailConfig = configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
+builder.Services.AddSingleton(emailConfig);
+builder.Services.AddScoped<IEmailService, EmailService>();
+
 
 // Register JwtSettings
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
