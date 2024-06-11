@@ -12,6 +12,7 @@ namespace TeleAfiaPersonal.Application.Authentication.Command.Register
             RuleFor(x => x.PhoneNumber).NotEmpty().MaximumLength(15);
             RuleFor(x => x.IdNumber).NotEmpty().MaximumLength(50);
             RuleFor(x => x.Password).NotEmpty().MinimumLength(6);
+            RuleFor(x => x.Location).NotEmpty().MinimumLength(6);
         }
     }
 }
