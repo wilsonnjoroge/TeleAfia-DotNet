@@ -1,6 +1,6 @@
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Reflection;
@@ -8,11 +8,11 @@ using System.Text;
 using TeleAfiaPersonal.Application.Authentication.Command.Register;
 using TeleAfiaPersonal.Application.Common.interfaces;
 using TeleAfiaPersonal.Application.Common.interfaces.Authentication;
-using TeleAfiaPersonal.Infrastructure;
 using TeleAfiaPersonal.Infrastructure.Authentication;
 using TeleAfiaPersonal.Infrastructure.Repositories;
 using MediatR;
-using AutoMapper; // Import AutoMapper namespace
+using AutoMapper;
+using TeleAfiaPersonal.Infrastructure; // Import AutoMapper namespace
 
 var builder = WebApplication.CreateBuilder(args);
 

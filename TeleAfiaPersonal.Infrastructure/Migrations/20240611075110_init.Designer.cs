@@ -12,8 +12,8 @@ using TeleAfiaPersonal.Infrastructure;
 namespace TeleAfiaPersonal.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240610172752_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240611075110_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

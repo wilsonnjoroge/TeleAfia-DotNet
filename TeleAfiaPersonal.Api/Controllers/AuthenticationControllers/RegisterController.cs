@@ -23,8 +23,8 @@ namespace TeleAfiaPersonal.Api.Controllers.AuthenticationControllers
         public async Task<IActionResult> Register(RegisterCommand command)
         {
             var response = await _mediator.Send(command);
-           // var mappedResponse = _mapper.Map<AuthenticationResponse>(response);
-            return Ok("User Registered Successfully");
+           var mappedResponse = _mapper.Map<AuthenticationResponse>(response);
+            return Ok(mappedResponse);
         }
     }
 }
