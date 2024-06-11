@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using TeleAfiaPersonal.Domain.UserAggregate.Entity;
 using TeleAfiaPersonal.Contracts.AuthenticationDTOs;
 using TeleAfiaPersonal.Application.Common.Interfaces;
 using TeleAfiaPersonal.Application.Common.interfaces.Authentication;
+using TeleAfiaPersonal.Domain.UserAggregate.Entity;
 
 namespace TeleAfiaPersonal.Application.Authentication.Command.Register
 {
@@ -26,6 +26,9 @@ namespace TeleAfiaPersonal.Application.Authentication.Command.Register
                 throw new Exception("Email address already exists.");
             }
 
+            // Hash the password before creating the user entity
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(request.Password);
+
             // Create a new user entity
             var user = new ApplicationUser(
                     request.FirstName,
@@ -34,12 +37,12 @@ namespace TeleAfiaPersonal.Application.Authentication.Command.Register
                     request.PhoneNumber,
                     request.Location,
                     request.IdNumber,
-                    request.Password);
+                    hashedPassword);
 
             // Add the user to the repository
             await _userRepository.AddAsync(user);
 
-            // Generate the token (assuming you have a method to do this)
+            // Generate the token
             var token = _tokenService.GenerateToken(user);
 
             // Create the response DTO
@@ -56,5 +59,6 @@ namespace TeleAfiaPersonal.Application.Authentication.Command.Register
 
             return response;
         }
+
     }
 }

@@ -1,4 +1,6 @@
-﻿using TeleAfiaPersonal.Domain.UserAggregate.Entity;
+﻿
+
+using TeleAfiaPersonal.Domain.UserAggregate.Entity;
 
 namespace TeleAfiaPersonal.Application.Common.Interfaces
 {
