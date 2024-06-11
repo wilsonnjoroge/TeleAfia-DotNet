@@ -18,7 +18,6 @@ namespace TeleAfiaPersonal.Application.Authentication.Command.Register
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Phone number is required.")]
-        [Phone(ErrorMessage = "Invalid phone number.")]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "ID number is required.")]
