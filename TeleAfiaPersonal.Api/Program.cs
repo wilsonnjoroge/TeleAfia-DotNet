@@ -6,13 +6,14 @@ using System;
 using System.Reflection;
 using System.Text;
 using TeleAfiaPersonal.Application.Authentication.Command.Register;
-using TeleAfiaPersonal.Application.Common.interfaces;
 using TeleAfiaPersonal.Application.Common.interfaces.Authentication;
 using TeleAfiaPersonal.Infrastructure.Authentication;
 using TeleAfiaPersonal.Infrastructure.Repositories;
 using MediatR;
 using AutoMapper;
-using TeleAfiaPersonal.Infrastructure; // Import AutoMapper namespace
+using TeleAfiaPersonal.Infrastructure;
+using TeleAfiaPersonal.Contracts.AuthenticationDTOs;
+using TeleAfiaPersonal.Application.Common.Interfaces; // Import AutoMapper namespace
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +35,7 @@ builder.Services.AddMediatR(Assembly.GetExecutingAssembly()); // Register Mediat
 builder.Services.AddAutoMapper(typeof(RegisterCommandHandler)); // Register AutoMapper for services from the executing assembly
 
 // Register RegisterCommandHandler
-builder.Services.AddTransient<IRequestHandler<RegisterCommand, Unit>, RegisterCommandHandler>();
+builder.Services.AddTransient<IRequestHandler<RegisterCommand, AuthenticationResponse>, RegisterCommandHandler>();
 // Register IUserRepository
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 

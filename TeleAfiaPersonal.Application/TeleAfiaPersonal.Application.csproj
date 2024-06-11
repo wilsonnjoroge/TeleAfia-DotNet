@@ -7,12 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TeleAfiaPersonal.Contracts\TeleAfiaPersonal.Contracts.csproj" />
-    <ProjectReference Include="..\TeleAfiaPersonal.Domain\TeleAfiaPersonal.Domain.csproj" />
+    <Compile Remove="Authentication\Common\**" />
+    <EmbeddedResource Remove="Authentication\Common\**" />
+    <None Remove="Authentication\Common\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Authentication\Common\" />
+    <ProjectReference Include="..\TeleAfiaPersonal.Contracts\TeleAfiaPersonal.Contracts.csproj" />
+    <ProjectReference Include="..\TeleAfiaPersonal.Domain\TeleAfiaPersonal.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

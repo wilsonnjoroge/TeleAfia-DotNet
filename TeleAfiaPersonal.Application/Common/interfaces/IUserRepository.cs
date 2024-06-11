@@ -1,11 +1,11 @@
-﻿
-using TeleAfiaPersonal.Domain.UserAggregate.Entity;
+﻿using TeleAfiaPersonal.Domain.UserAggregate.Entity;
 
-namespace TeleAfiaPersonal.Application.Common.interfaces
+namespace TeleAfiaPersonal.Application.Common.Interfaces
 {
     public interface IUserRepository
     {
         Task AddAsync(ApplicationUser user);
-
+        Task<ApplicationUser> GetByEmailAsync(string email);
+        
     }
 }
