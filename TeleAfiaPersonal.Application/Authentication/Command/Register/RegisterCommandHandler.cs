@@ -1,10 +1,8 @@
-﻿
-using MediatR;
+﻿using MediatR;
 using TeleAfiaPersonal.Domain.UserAggregate.Entity;
 using TeleAfiaPersonal.Contracts.AuthenticationDTOs;
-using TeleAfiaPersonal.Application.Common.interfaces.Authentication;
-using TeleAfiaPersonal.Application.Common.interfaces;
 using TeleAfiaPersonal.Application.Common.Interfaces;
+using TeleAfiaPersonal.Application.Common.interfaces.Authentication;
 
 namespace TeleAfiaPersonal.Application.Authentication.Command.Register
 {
@@ -34,6 +32,7 @@ namespace TeleAfiaPersonal.Application.Authentication.Command.Register
                     request.LastName,
                     request.Email,
                     request.PhoneNumber,
+                    request.Location,
                     request.IdNumber,
                     request.Password);
 
@@ -51,6 +50,7 @@ namespace TeleAfiaPersonal.Application.Authentication.Command.Register
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 IdNumber = user.IdNumber,
+                Location = user.Location,
                 Token = token
             };
 

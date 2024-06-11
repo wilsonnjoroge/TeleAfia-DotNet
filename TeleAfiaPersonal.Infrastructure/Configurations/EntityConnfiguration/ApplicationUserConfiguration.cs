@@ -1,9 +1,11 @@
-﻿// File path: TeleAfiaPersonal.Infrastructure/EntityConfigurations/ApplicationUserConfiguration.cs
+﻿
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using TeleAfiaPersonal.Domain.UserAggregate.Entity;
+
+
 namespace TeleAfiaPersonal.Infrastructure.EntityConfigurations
 {
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using TeleAfiaPersonal.Domain.UserAggregate.Entity; // Adjust to the namespace of your domain entity
 
     public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {
@@ -20,7 +22,7 @@ namespace TeleAfiaPersonal.Infrastructure.EntityConfigurations
                 .HasField("_updatedDate")
                 .IsRequired();
 
-            // Other property configurations as needed
+            // Property configurations for additional fields
             builder.Property(u => u.FirstName)
                 .IsRequired()
                 .HasMaxLength(100);
@@ -39,7 +41,10 @@ namespace TeleAfiaPersonal.Infrastructure.EntityConfigurations
             builder.Property(u => u.IdNumber)
                 .HasMaxLength(50);
 
-            builder.Property(u => u.PasswordHash)
+           builder.Property(u => u.Location)
+                .HasMaxLength(200);
+
+            builder.Property(u => u.Password)
                 .IsRequired();
         }
     }

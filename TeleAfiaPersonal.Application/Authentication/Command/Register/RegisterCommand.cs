@@ -1,27 +1,34 @@
 ﻿using MediatR;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TeleAfiaPersonal.Contracts.AuthenticationDTOs;
 
 namespace TeleAfiaPersonal.Application.Authentication.Command.Register
 {
     public class RegisterCommand : IRequest<AuthenticationResponse>
     {
-        [Required]
+        [Required(ErrorMessage = "First name is required.")]
         public string FirstName { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Last name is required.")]
         public string LastName { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Email is required.")]
+        [EmailAddress(ErrorMessage = "Invalid email address.")]
         public string Email { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Phone number is required.")]
+        [Phone(ErrorMessage = "Invalid phone number.")]
         public string PhoneNumber { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "ID number is required.")]
         public string IdNumber { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Location is required.")]
+        public string Location { get; set; }
+
+        [Required(ErrorMessage = "Password is required.")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
     }
 }

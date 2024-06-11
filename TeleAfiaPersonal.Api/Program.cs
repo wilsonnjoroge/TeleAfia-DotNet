@@ -13,7 +13,8 @@ using MediatR;
 using AutoMapper;
 using TeleAfiaPersonal.Infrastructure;
 using TeleAfiaPersonal.Contracts.AuthenticationDTOs;
-using TeleAfiaPersonal.Application.Common.Interfaces; // Import AutoMapper namespace
+using TeleAfiaPersonal.Application.Common.Interfaces;
+using TeleAfiaPersonal.Application.Authentication.Command.Login; // Import AutoMapper namespace
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +37,10 @@ builder.Services.AddAutoMapper(typeof(RegisterCommandHandler)); // Register Auto
 
 // Register RegisterCommandHandler
 builder.Services.AddTransient<IRequestHandler<RegisterCommand, AuthenticationResponse>, RegisterCommandHandler>();
+
+// Register LoginCommandHandler
+builder.Services.AddTransient<IRequestHandler<LoginQuery, AuthenticationResponse>, LoginQueryHandler>();
+
 // Register IUserRepository
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
