@@ -1,8 +1,9 @@
 ﻿using FluentValidation;
+using TeleAfiaPersonal.Contracts.AuthenticationDTOs;
 
 namespace TeleAfiaPersonal.Application.Authentication.Command.Register
 {
-    public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
+    public class RegisterCommandValidator : AbstractValidator<RegisterRequest>
     {
         public RegisterCommandValidator()
         {

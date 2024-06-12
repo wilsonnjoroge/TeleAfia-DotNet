@@ -19,17 +19,17 @@ namespace TeleAfiaPersonal.Application.Authentication.Command.Login
 
         public async Task<AuthenticationResponse> Handle(LoginQuery request, CancellationToken cancellationToken)
         {
-
+            var Request = request.LoginRequest;
             
             // Check if the user exists with the given email
-            var user = await _userRepository.GetByEmailAsync(request.Email);
+            var user = await _userRepository.GetByEmailAsync(Request.Email);
             if (user == null)
             {
                 throw new Exception("User not found");
             }
 
             // Verify the password using BCrypt
-            var isPasswordValid = BCrypt.Net.BCrypt.Verify(request.Password, user.Password);
+            var isPasswordValid = BCrypt.Net.BCrypt.Verify(Request.Password, user.Password);
             if (!isPasswordValid)
             {
                 throw new Exception("Wrong Password");

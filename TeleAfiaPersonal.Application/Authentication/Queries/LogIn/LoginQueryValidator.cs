@@ -1,8 +1,9 @@
 ﻿using FluentValidation;
+using TeleAfiaPersonal.Contracts.AuthenticationDTOs;
 
 namespace TeleAfiaPersonal.Application.Authentication.Command.Login
 {
-    public class LoginQueryValidator : AbstractValidator<LoginQuery>
+    public class LoginQueryValidator : AbstractValidator<LoginRequest>
     {
         public LoginQueryValidator()
         {
