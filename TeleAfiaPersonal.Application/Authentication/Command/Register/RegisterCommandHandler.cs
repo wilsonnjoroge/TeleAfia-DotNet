@@ -19,24 +19,26 @@ namespace TeleAfiaPersonal.Application.Authentication.Command.Register
 
         public async Task<AuthenticationResponse> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
+            var Request = request.RegisterRequest;
+
             // Check if the email already exists in the database
-            var existingUser = await _userRepository.GetByEmailAsync(request.Email);
+            var existingUser = await _userRepository.GetByEmailAsync(Request.Email);
             if (existingUser != null)
             {
                 throw new Exception("Email address already exists.");
             }
 
             // Hash the password before creating the user entity
-            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(request.Password);
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(Request.Password);
 
             // Create a new user entity
             var user = new ApplicationUser(
-                    request.FirstName,
-                    request.LastName,
-                    request.Email,
-                    request.PhoneNumber,
-                    request.Location,
-                    request.IdNumber,
+                    Request.FirstName,
+                    Request.LastName,
+                    Request.Email,
+                    Request.PhoneNumber,
+                    Request.Location,
+                    Request.IdNumber,
                     hashedPassword);
 
             // Add the user to the repository
