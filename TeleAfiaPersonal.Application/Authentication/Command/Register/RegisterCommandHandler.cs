@@ -39,7 +39,11 @@ namespace TeleAfiaPersonal.Application.Authentication.Command.Register
                     Request.PhoneNumber,
                     Request.Location,
                     Request.IdNumber,
-                    hashedPassword);
+                    hashedPassword,
+                    resetToken: null,
+                    isDeleted: false,
+                    isEmailConfirmed: false
+                    );
 
             // Add the user to the repository
             await _userRepository.AddAsync(user);

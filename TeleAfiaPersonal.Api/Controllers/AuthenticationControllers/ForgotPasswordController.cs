@@ -1,10 +1,8 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using TeleAfiaPersonal.Application.Authentication.Queries.ForgotPassword;
 using TeleAfiaPersonal.Contracts.AuthenticationDTOs;
-using Azure;
 using AutoMapper;
+using TeleAfiaPersonal.Application.Authentication.Command.ForgotPassword;
 
 namespace TeleAfiaPersonal.WebAPI.Controllers
 {
@@ -30,7 +28,7 @@ namespace TeleAfiaPersonal.WebAPI.Controllers
                 return BadRequest(new { Message = "Invalid email address." });
             }
 
-            var query = new ForgotPasswordQuery { ForgotPasswordRequest = request };
+            var query = new ForgotPasswordCommand { ForgotPasswordRequest = request };
             var response = await _mediator.Send(query);
 
             var mappedResponse = _mapper.Map<ForgotPasswordResponse>(response);

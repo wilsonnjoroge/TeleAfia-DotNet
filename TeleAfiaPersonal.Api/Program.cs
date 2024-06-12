@@ -14,7 +14,8 @@ using TeleAfiaPersonal.Application.Common.Interfaces;
 using TeleAfiaPersonal.Application.Authentication.Command.Login;
 using TeleAfiaPersonal.Infrastructure.EmailSender;
 using TeleAfiaPersonal.Contracts.EmailDTO;
-using TeleAfiaPersonal.Application.Authentication.Queries.ForgotPassword;
+using TeleAfiaPersonal.Application.Authentication.Command.ForgotPassword;
+using TeleAfiaPersonal.Application.Authentication.Command.ResetPassword;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,7 +45,11 @@ builder.Services.AddTransient<IRequestHandler<RegisterCommand, AuthenticationRes
 builder.Services.AddTransient<IRequestHandler<LoginQuery, AuthenticationResponse>, LoginQueryHandler>();
 
 // Register ForgotPasswordQueryHandler
-builder.Services.AddTransient<IRequestHandler<ForgotPasswordQuery, ForgotPasswordResponse>, ForgotPasswordQueryHandler>();
+builder.Services.AddTransient<IRequestHandler<ForgotPasswordCommand, ForgotPasswordResponse>, ForgotPasswordQueryHandler>();
+
+// Register ResetPasswordQueryHandler
+builder.Services.AddTransient<IRequestHandler<ResetPasswordCommand, ResetPasswordResponse>, ResetPasswordCommandHandler>();
+
 
 // Register IUserRepository
 builder.Services.AddScoped<IUserRepository, UserRepository>();

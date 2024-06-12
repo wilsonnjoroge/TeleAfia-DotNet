@@ -7,9 +7,9 @@ using TeleAfiaPersonal.Application.Common.Interfaces;
 using TeleAfiaPersonal.Contracts.AuthenticationDTOs;
 using TeleAfiaPersonal.Contracts.MessageDTO;
 
-namespace TeleAfiaPersonal.Application.Authentication.Queries.ForgotPassword
+namespace TeleAfiaPersonal.Application.Authentication.Command.ForgotPassword
 {
-    public class ForgotPasswordQueryHandler : IRequestHandler<ForgotPasswordQuery, ForgotPasswordResponse>
+    public class ForgotPasswordQueryHandler : IRequestHandler<ForgotPasswordCommand, ForgotPasswordResponse>
     {
         private readonly IUserRepository _userRepository;
         private readonly IJwtTokenGenerator _tokenService;
@@ -22,7 +22,7 @@ namespace TeleAfiaPersonal.Application.Authentication.Queries.ForgotPassword
             _emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
         }
 
-        public async Task<ForgotPasswordResponse> Handle(ForgotPasswordQuery request, CancellationToken cancellationToken)
+        public async Task<ForgotPasswordResponse> Handle(ForgotPasswordCommand request, CancellationToken cancellationToken)
         {
             if (request == null || request.ForgotPasswordRequest == null)
             {
@@ -45,6 +45,12 @@ namespace TeleAfiaPersonal.Application.Authentication.Queries.ForgotPassword
             // Generate a password reset token
             var token = _tokenService.GenerateRandomToken(user);
 
+            // Update the user's reset token
+            user.SetResetToken(token);
+
+            // Save the updated user entity to the repository
+            await _userRepository.UpdateAsync(user);
+
             // Create the email message content
             var message = new Message(
                 new[] { forgotPasswordRequest.Email },
@@ -52,7 +58,7 @@ namespace TeleAfiaPersonal.Application.Authentication.Queries.ForgotPassword
                 $"Your password reset token is {token}");
 
             // Send the reset token email
-             _emailService.SendEmail(message);
+            _emailService.SendEmail(message);
 
             // Prepare and return the response
             var response = new ForgotPasswordResponse
