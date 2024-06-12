@@ -42,7 +42,8 @@ namespace TeleAfiaPersonal.Application.Authentication.Command.Register
                     hashedPassword,
                     resetToken: null,
                     isDeleted: false,
-                    isEmailConfirmed: false
+                    isEmailConfirmed: false,
+                    is2FAEnabled: false
                     );
 
             // Add the user to the repository

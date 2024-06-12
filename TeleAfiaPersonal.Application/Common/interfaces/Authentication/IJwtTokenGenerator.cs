@@ -12,3 +12,4 @@ namespace TeleAfiaPersonal.Application.Common.interfaces.Authentication
         string GenerateRandomToken(ApplicationUser user);
     }
 }
+

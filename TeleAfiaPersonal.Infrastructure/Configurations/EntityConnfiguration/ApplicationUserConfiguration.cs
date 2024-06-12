@@ -1,12 +1,9 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TeleAfiaPersonal.Domain.UserAggregate.Entity;
 
-
 namespace TeleAfiaPersonal.Infrastructure.EntityConfigurations
 {
-
     public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
@@ -41,11 +38,23 @@ namespace TeleAfiaPersonal.Infrastructure.EntityConfigurations
             builder.Property(u => u.IdNumber)
                 .HasMaxLength(50);
 
-           builder.Property(u => u.Location)
+            builder.Property(u => u.Location)
                 .HasMaxLength(200);
 
             builder.Property(u => u.Password)
                 .IsRequired();
+
+            builder.Property(u => u.IsEmailConfirmed)
+                .IsRequired();
+
+            builder.Property(u => u.Is2FAEnabled)
+                .IsRequired();
+
+            builder.Property(u => u.IsDeleted)
+                .IsRequired();
+
+            builder.Property(u => u.ResetToken)
+                .HasMaxLength(200); // Adjust the length as necessary
         }
     }
 }
