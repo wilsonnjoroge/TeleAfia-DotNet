@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -14,7 +13,8 @@ using TeleAfiaPersonal.Contracts.AuthenticationDTOs;
 using TeleAfiaPersonal.Application.Common.Interfaces;
 using TeleAfiaPersonal.Application.Authentication.Command.Login;
 using TeleAfiaPersonal.Infrastructure.EmailSender;
-using TeleAfiaPersonal.Contracts.EmailDTO; // Import AutoMapper namespace
+using TeleAfiaPersonal.Contracts.EmailDTO;
+using TeleAfiaPersonal.Application.Authentication.Queries.ForgotPassword;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +31,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
 // Register MediatR
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly()); // Register MediatR for services from the executing assembly
 
@@ -44,6 +43,9 @@ builder.Services.AddTransient<IRequestHandler<RegisterCommand, AuthenticationRes
 // Register LoginCommandHandler
 builder.Services.AddTransient<IRequestHandler<LoginQuery, AuthenticationResponse>, LoginQueryHandler>();
 
+// Register ForgotPasswordQueryHandler
+builder.Services.AddTransient<IRequestHandler<ForgotPasswordQuery, ForgotPasswordResponse>, ForgotPasswordQueryHandler>();
+
 // Register IUserRepository
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
@@ -51,7 +53,6 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 var emailConfig = configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
 builder.Services.AddSingleton(emailConfig);
 builder.Services.AddScoped<IEmailService, EmailService>();
-
 
 // Register JwtSettings
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
