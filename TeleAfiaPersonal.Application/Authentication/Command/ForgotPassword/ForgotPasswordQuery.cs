@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TeleAfiaPersonal.Contracts.AuthenticationDTOs;
 
-namespace TeleAfiaPersonal.Application.Authentication.Queries.ForgotPassword
+namespace TeleAfiaPersonal.Application.Authentication.Command.ForgotPassword
 {
-    public class ForgotPasswordQuery : IRequest<ForgotPasswordResponse>
+    public class ForgotPasswordCommand : IRequest<ForgotPasswordResponse>
     {
         public ForgotPasswordRequest ForgotPasswordRequest { get; set; }
     }
