@@ -16,13 +16,24 @@
         public string Location { get; private set; }
         public string Password { get; private set; }
         public bool IsEmailConfirmed { get; private set; } = false;
+        public bool Is2FAEnabled { get; private set; } = false;
         public bool IsDeleted { get; private set; } = false;
         public string? ResetToken { get; private set; }
         public DateTime CreatedDate => _createdDate;
         public DateTime UpdatedDate => _updatedDate;
 
         // Constructor
-        public ApplicationUser(string firstName, string lastName, string email, string phoneNumber, string idNumber, string location, string password, bool isEmailConfirmed, bool isDeleted, string resetToken)
+        public ApplicationUser(string firstName,
+                               string lastName,
+                               string email,
+                               string phoneNumber,
+                               string idNumber,
+                               string location,
+                               string password,
+                               bool isEmailConfirmed,
+                               bool is2FAEnabled,
+                               bool isDeleted,
+                               string resetToken)
         {
             _id = Guid.NewGuid();
             FirstName = firstName;
@@ -34,13 +45,23 @@
             Password = password;
             ResetToken = resetToken;
             IsEmailConfirmed = isEmailConfirmed;
+            Is2FAEnabled = is2FAEnabled;
             IsDeleted = isDeleted;
             _createdDate = DateTime.UtcNow;
             _updatedDate = DateTime.UtcNow;
         }
 
         // Methods for updating properties
-        public void UpdateUserDetails(string firstName, string lastName, string email, string phoneNumber, string location, string idNumber, bool isEmailConfirmed, bool isDeleted, string resetToken)
+        public void UpdateUserDetails(string firstName,
+                                      string lastName,
+                                      string email,
+                                      string phoneNumber,
+                                      string location,
+                                      string idNumber,
+                                      bool isEmailConfirmed,
+                                      bool is2FAEnabled,
+                                      bool isDeleted,
+                                      string resetToken)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -50,6 +71,7 @@
             Location = location;
             ResetToken = resetToken;
             IsEmailConfirmed = isEmailConfirmed;
+            Is2FAEnabled = is2FAEnabled;
             IsDeleted = isDeleted;
             _updatedDate = DateTime.UtcNow;
         }

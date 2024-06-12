@@ -8,5 +8,7 @@ namespace TeleAfiaPersonal.Application.Common.Interfaces
         Task AddAsync(ApplicationUser user);
         Task<ApplicationUser> GetByEmailAsync(string email);
         Task UpdateAsync(ApplicationUser user); // Add this method for updating the user
+        // Method to verify 2FA code
+
     }
 }

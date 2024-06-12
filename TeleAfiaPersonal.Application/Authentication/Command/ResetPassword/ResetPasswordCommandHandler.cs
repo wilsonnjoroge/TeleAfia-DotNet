@@ -56,6 +56,7 @@ namespace TeleAfiaPersonal.Application.Authentication.Command.ResetPassword
                 user.IdNumber,
                 user.IsEmailConfirmed,
                 user.IsDeleted,
+                user.Is2FAEnabled,
                 null // Clear the reset token
             );
 

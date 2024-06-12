@@ -15,5 +15,6 @@ namespace TeleAfiaPersonal.Contracts.AuthenticationDTOs
 
         [Required]
         public string Password { get; set; }
+
     }
 }
